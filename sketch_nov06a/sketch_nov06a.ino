@@ -17,7 +17,7 @@
 //intitialize the LED to Pin 13
 
 int led = 13;
-//digital pin 2 has a push button attached to it
+// Digital pin 2 has a push button attached to it
 int pushButton = 2;
 
 
@@ -25,7 +25,7 @@ void setup() {
   // Using the function pinMode to call the variable led and provide Output
   pinMode(led, OUTPUT);
 
-  //initializes serial communication at 9600 bits per second
+  // Initializes serial communication at 9600 bits per second
   Serial.begin(9600);
   //make the pushButton pin an input
   pinMode(pushButton, INPUT);
@@ -39,11 +39,18 @@ void loop() {
   digitalWrite(led, LOW);
   delay(500);
 
-//read the input pin
+// Read the input pin
   int buttonState = digitalRead(pushButton);
   //prints out the state of the button
   Serial.println(buttonState);
-  delay(250);
+// If the buttonState is True or Pushed, then the LED will Blink
+  if (buttonState==HIGH){
+    digitalWrite(led, HIGH);
+    delay(1500);
+    digitalWrite(led, LOW);
+    delay(500);
+  }
+  
   //delay in between readings for stability
   
 }
